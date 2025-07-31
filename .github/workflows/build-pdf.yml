@@ -18,13 +18,13 @@ jobs:
   build-pdf:
     uses: kolosovpetro/github-latex-template/.github/workflows/build-pdf-template.yml@main
     with:
-      file_name: 'GithubLatexTemplate'
+      file_name: 'faulhabers-coefficients-examples'
       enable_patch_version: false
       runs_on: 'ubuntu-latest'
       workflow_name: 'Build PDF'
       build_assets_path: |
-        src/GithubLatexTemplate.tex
-        src/GithubLatexTemplate.bbl
-        src/GithubLatexTemplate.bib
+        src/faulhabers-coefficients-examples.tex
+        src/faulhabers-coefficients-examples.bbl
+        src/faulhabers-coefficients-examples.bib
         src/sections
       working_directory_for_latex: 'src'

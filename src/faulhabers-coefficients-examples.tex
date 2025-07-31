@@ -7,7 +7,7 @@
 \usepackage{mathrsfs}
 \usepackage{colonequals}
 \usepackage[font=small,labelfont=bf]{caption}
-\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=magenta,citecolor=green]{hyperref}
+\usepackage[pdfpagelabels,hyperindex,colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=green]{hyperref}
 \usepackage{graphicx}
 \emergencystretch=1em
 \usepackage{array}
@@ -21,7 +21,7 @@
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
 \raggedbottom
 
-\newcommand \coeffA [3][A] {{\mathbf{#1}} \sb{#2,#3}}
+\newcommand \coeffA [3][A] {{#1} \sp{(#2)} \sb{#3}}
 \newcommand \polynomialP [4][P]{{\mathbf{#1}}\sp{#2} \sb{#3}(#4)}
 \newcommand \bernoulli [2][B] {{#1}\sb{#2}}
 

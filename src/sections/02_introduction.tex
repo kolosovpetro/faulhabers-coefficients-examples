@@ -1,0 +1,56 @@
+The work Johann Faulhaber and sums of powers~\cite[p. 16]{knuth1993johann} provides the following identity for
+sums of odd powers
+\begin{align*}
+    \Sigma n^{2m-1} = \frac{1}{2m} (\bernoulli{2m}(n+1) - \bernoulli{2m})
+    = \frac{1}{2m} (\coeffA{m}{0}u^{m} + \coeffA{m}{1}u^{m-1} + \cdots \coeffA{m}{m-1} u)
+\end{align*}
+where $\coeffA{m}{r}$ are Faulhaber's coefficients, and $u=n^2 + n$.
+For every $r >m$ or $r < 0$ the coefficients $\coeffA{m}{r}$ are zeroes.
+In Knuth's notation, the sigma $\Sigma n^{2m-1}$ denotes the sum of powers $\Sigma n^{2m-1} = 1^{2m-1} + 2^{2m-1} + \cdots n^{2m-1}$.
+Consider the equation above with the summation limits defined explicitly
+\begin{align*}
+    \sum_{k=1}^{p} k^{2m-1} = \frac{1}{2m} (\coeffA{m}{0}u^{m} + \coeffA{m}{1}u^{m-1} + \cdots \coeffA{m}{m-1} u)
+\end{align*}
+where $u=p^2+p$.
+As expected, the power sum $\sum_{k=1}^{p} k^{2m+1}$ has a closed form polynomial in $p$,
+which corresponds to Faulhaber's formula.
+The coefficients $\coeffA{m}{r}$ are defined by
+\begin{align*}
+    \coeffA{m}{k} =
+    \begin{cases}
+        \bernoulli{2m} & \mathrm{if} \; k=m \\
+        (-1)^{m-k} \sum_{j} \binom{2m}{m-k-j} \binom{m-k+j}{j} \frac{m-k-j}{m-k+j} \bernoulli{m+k+j} & \mathrm{if} \; 0 \leq k<m \\
+        0 & \mathrm{if} \; r<0 \; \mathrm{or} \; r>m
+    \end{cases}
+\end{align*}
+For example,
+\input{sections/figures/05_fig_coefficients_a}
+In its explicit form the sum of odd powers is
+\begin{align*}
+    \sum_{k=1}^{p} k^{2m-1} = \frac{1}{2m} \sum_{r=0}^{m-1} \coeffA{m}{r} (p^2+p)^{m-r}
+\end{align*}
+Consider the examples of power sums for various values of $m$, while setting $u=p^2+p$
+\begin{align*}
+    \sum_{k=1}^{p} n   &= \frac{1}{2} u &&= \frac{1}{2} A_0^{(1)} u \\
+    \sum_{k=1}^{p} n^3 &= \frac{1}{4} u^2 &&= \frac{1}{4} \left( A_0^{(2)} u^2 + A_1^{(2)} u \right)  \\
+    \sum_{k=1}^{p} n^5 &= \frac{1}{6} \left( u^3 - \frac{1}{2} u^2 \right) &&= \frac{1}{6} \left( A_0^{(3)} u^3 + A_1^{(3)} u^2 + A_2^{(3)} u \right) \\
+    \sum_{k=1}^{p} n^7 &= \frac{1}{8} \left( u^4 - \frac{4}{3} u^3 + \frac{2}{3} u^2 \right) &&= \frac{1}{8} \left( A_0^{(4)} u^4 + A_1^{(4)} u^3 + A_2^{(4)} u^2 + A_3^{(4)} u \right)
+\end{align*}
+\begin{align*}
+    \sum_{k=1}^{p} n
+    &= \frac{1}{2} \cdot 1 \cdot (p^2 + p) = \frac{1}{2} \left(p^2+p\right) \\[8pt]
+    \sum_{k=1}^{p} n^3
+    &= \frac{1}{4} \left( 1 \cdot (p^2 + p)^2 + 0 \cdot (p^2 + p) \right) = \frac{1}{4} \left(p^2+p\right)^2 \\[8pt]
+    \sum_{k=1}^{p} n^5
+    &= \frac{1}{6} \left( 1 \cdot (p^2 + p)^3 - \frac{1}{2} \cdot (p^2 + p)^2 + 0 \cdot (p^2 + p) \right) = \frac{1}{6} \left(\left(p^2+p\right)^3-\frac{1}{2} \left(p^2+p\right)^2\right) \\[8pt]
+    \sum_{k=1}^{p} n^7
+    &= \frac{1}{8} \left( 1 \cdot (p^2 + p)^4 - \frac{4}{3} \cdot (p^2 + p)^3 + \frac{2}{3} \cdot (p^2 + p)^2 + 0 \cdot (p^2 + p) \right) \\
+    &=\frac{1}{8} \left(\left(p^2+p\right)^4-\frac{4}{3} \left(p^2+p\right)^3+\frac{2}{3} \left(p^2+p\right)^2\right)
+\end{align*}
+
+Mathematica functions to validate, see this \href{https://github.com/kolosovpetro/faulhabers-coefficients-examples}{\texttt{GitHub repository}}
+\begin{itemize}
+    \item \texttt{FaulhaberCoefficients[n,k]} validates the coefficients $\coeffA{m}{r}$
+    \item \texttt{FaulhaberSum[p,m]} validates the identity $\sum_{k=1}^{p} k^{2m-1} = \frac{1}{2m} \sum_{r=0}^{m-1} \coeffA{m}{r} (p^2+p)^{m-r}$
+    \item \texttt{SumOfOddPowers[p, m]} power sum $\sum_{k=1}^{p} k^{2m-1}$, the result matches with $\sum_{k=1}^{p} k^{2m-1} = \frac{1}{2m} \sum_{r=0}^{m-1} \coeffA{m}{r} (p^2+p)^{m-r}$
+\end{itemize}
